@@ -6,7 +6,7 @@ function AddressBook() {
 
 AddressBook.prototype.addContact = function(contact) {
   contact.id = this.assignId();
-  this.contracts[contact.firstName] = contact;
+  this.contacts[contact.firstName] = contact;
 };
 
 AddressBook.prototype.assignId = function() {
@@ -36,11 +36,11 @@ function Contact(firstName, lastName, phoneNumber) {
 }
 
 Contact.prototype.fullNmae = function() {
-  return this.firstName + " " +this.lastName;
+  return this.firstName + " " + this.lastName;
 };
 
 //UI Logic
-
+//below is only used to mimic a database, we normally stray away from global variables
 let addressBook = new AddressBook();
 
 function handleFormSubmission(event) {
@@ -50,7 +50,7 @@ function handleFormSubmission(event) {
   const inputtedPhoneNumber = document.querySelector("input#new-phone-number").value;
   let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
   addressBook.addContact(newContact);
-  console.log(addressbook.contacts);
+  console.log(addressBook.contacts);
 }
 
 window.addEventListener("load", function(){

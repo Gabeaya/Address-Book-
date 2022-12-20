@@ -35,7 +35,7 @@ function Contact(firstName, lastName, phoneNumber) {
   this.phoneNumber = phoneNumber;
 }
 
-Contact.prototype.fullNmae = function() {
+Contact.prototype.fullNane = function() {
   return this.firstName + " " + this.lastName;
 };
 
@@ -44,7 +44,7 @@ Contact.prototype.fullNmae = function() {
 let addressBook = new AddressBook();
 
 function listContacts(addressBookToDisplay) {
-  
+  let contactsDiv = document.querySelector("div#contacts");
 }
 function handleFormSubmission(event) {
   event.preventDefault();

@@ -45,6 +45,7 @@ let addressBook = new AddressBook();
 
 function listContacts(addressBookToDisplay) {
   let contactsDiv = document.querySelector("div#contacts");
+  contactsDiv.innerText =  null;
 }
 function handleFormSubmission(event) {
   event.preventDefault();

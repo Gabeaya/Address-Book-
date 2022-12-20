@@ -35,7 +35,7 @@ function Contact(firstName, lastName, phoneNumber) {
   this.phoneNumber = phoneNumber;
 }
 
-Contact.prototype.fullNane = function() {
+Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 };
 
@@ -56,6 +56,11 @@ function listContacts(addressBookToDisplay) {
   });
   contactsDiv.append(ul);
 }
+
+function displayContactDetails() {
+
+}
+
 function handleFormSubmission(event) {
   event.preventDefault();
   const inputtedFirstName = document.querySelector("input#new-first-name").value;
@@ -68,4 +73,5 @@ function handleFormSubmission(event) {
 
 window.addEventListener("load", function(){
   this.document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
+  this.document.querySelector("div#contacts").addEventListener("click", displayContactDetails);
 });

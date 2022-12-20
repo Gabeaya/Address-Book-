@@ -43,6 +43,9 @@ Contact.prototype.fullNmae = function() {
 //below is only used to mimic a database, we normally stray away from global variables
 let addressBook = new AddressBook();
 
+function listContacts(addressBookToDisplay) {
+  
+}
 function handleFormSubmission(event) {
   event.preventDefault();
   const inputtedFirstName = document.querySelector("input#new-first-name").value;

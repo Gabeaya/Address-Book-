@@ -54,6 +54,7 @@ function listContacts(addressBookToDisplay) {
     li.setAttribute("id", contact.id);
     ul.append(li);
   });
+  contactsDiv.append(ul);
 }
 function handleFormSubmission(event) {
   event.preventDefault();

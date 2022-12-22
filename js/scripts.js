@@ -1,4 +1,4 @@
-//Business Logic 
+// Business Logic for AddressBook ---------
 function AddressBook() {
   this.contacts = {};
   this.currentId = 0;
@@ -6,12 +6,19 @@ function AddressBook() {
 
 AddressBook.prototype.addContact = function(contact) {
   contact.id = this.assignId();
-  this.contacts[contact.firstName] = contact;
+  this.contacts[contact.id] = contact;
 };
 
 AddressBook.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
+};
+
+AddressBook.prototype.findContact = function(id) {
+  if (this.contacts[id] !== undefined) {
+    return this.contacts[id];
+  }
+  return false;
 };
 
 AddressBook.prototype.deleteContact = function(id) {
@@ -22,13 +29,7 @@ AddressBook.prototype.deleteContact = function(id) {
   return true;
 };
 
-AddressBook.prototype.findContact = function(id) {
-  if (this.contacts[id] !== undefined) {
-    return this.contacts[id];
-  }
-  return false;
-};
-
+// Business Logic for Contacts ---------
 function Contact(firstName, lastName, phoneNumber) {
   this.firstName = firstName;
   this.lastName = lastName;
@@ -39,8 +40,7 @@ Contact.prototype.fullName = function() {
   return this.firstName + " " + this.lastName;
 };
 
-//UI Logic
-//below is only used to mimic a database, we normally stray away from global variables
+// User Interface Logic ---------
 let addressBook = new AddressBook();
 
 function listContacts(addressBookToDisplay) {
@@ -57,8 +57,12 @@ function listContacts(addressBookToDisplay) {
   contactsDiv.append(ul);
 }
 
-function displayContactDetails() {
-
+function displayContactDetails(event) {
+  const contact = addressBook.findContact(event.target.id);
+  document.querySelector(".first-name").innerText = contact.firstName;
+  document.querySelector(".last-name").innerText = contact.lastName;
+  document.querySelector(".phone-number").innerText = contact.phoneNumber;
+  document.querySelector("div#contact-details").removeAttribute("class");
 }
 
 function handleFormSubmission(event) {
@@ -71,7 +75,7 @@ function handleFormSubmission(event) {
   listContacts(addressBook);
 }
 
-window.addEventListener("load", function(){
-  this.document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
-  this.document.querySelector("div#contacts").addEventListener("click", displayContactDetails);
+window.addEventListener("load", function (){
+  document.querySelector("form#new-contact").addEventListener("submit", handleFormSubmission);
+  document.querySelector("div#contacts").addEventListener("click", displayContactDetails);
 });

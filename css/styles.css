@@ -6,3 +6,7 @@
   text-align: center;
 }
 
+.center {
+  margin: auto;
+  width: 40%;
+}

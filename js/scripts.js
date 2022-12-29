@@ -80,6 +80,9 @@ function handleFormSubmission(event) {
   let newContact = new Contact(inputtedFirstName, inputtedLastName, inputtedPhoneNumber);
   addressBook.addContact(newContact);
   listContacts(addressBook);
+  document.querySelector("input#new-first-name").value = null;
+  document.querySelector("input#new-last-name").value = null;
+  document.querySelector("input#new-phone-number").value = null;
 }
 
 window.addEventListener("load", function (){
